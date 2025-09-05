@@ -21,9 +21,11 @@ export const ResultDiv : FC<ResultDivProps> = (props) => {
     }, [props.search])
 
     return (
+        <>
+        {result && 
         <div id='result-div'>
             
-            {(result && result["Response"] == "True") ?
+            {(result["Response"] == "True") ?
                 
             <div className='main-result-div'>
                 <div className='poster-and-ratings-div'>
@@ -54,11 +56,13 @@ export const ResultDiv : FC<ResultDivProps> = (props) => {
                     <p>{result["Plot"]}</p>
                     <p className='director'><strong>Director:</strong> {result["Director"]}</p>
                 </div>    
-            </div> : <h2>{result["Error"]}</h2>
+            </div> : <h1>{result["Error"]}</h1>
             }
             
 
             
         </div>
+}   
+        </>
     )
 }
