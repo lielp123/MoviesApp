@@ -10,16 +10,10 @@ const URL = "https://www.omdbapi.com/?apikey=ab369e26";
 export const ResultDiv : FC<ResultDivProps> = (props) => {
 
     const [result, setResult] = useState<any>();
-    const [err, setError] = useState("");
-
     useEffect(() => {
         const loadResult = async () => {
             const res = await fetch(`${URL}&t=${props.search}`);
             const json = await res.json();
-            console.log(json);
-            if(json) {
-                setError("Unable to find movie: " + props.search);
-            }
             setResult(json);
         }
 
