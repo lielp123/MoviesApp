@@ -1,0 +1,56 @@
+.main-result-div {
+    display: flex;
+    gap: 1em;
+}
+
+.poster-and-ratings-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2, p {
+    margin: 0;
+}
+
+#result-div {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.poster {
+    width: 8em;
+    height: fit-content;
+}
+
+.text-div {
+    color: #EEEAF5;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.director {
+    margin-top: 1em;
+}
+
+.ratings-div {
+    display: flex;
+    width: 100%;
+    padding: 1em;
+    justify-content: space-between;
+}
+
+.rating-and-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2em;
+    color:#EEEAF5;
+}
+
+.icon {
+    width: 2em;
+}

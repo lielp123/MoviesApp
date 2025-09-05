@@ -1,31 +1,34 @@
-import { useState, type ChangeEvent, type FC } from 'react';
+import { type JSX, useState, type FC, useRef } from 'react';
 import './SearchMoviePageStyle.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { ResultDiv } from '../../ResultDiv/ResultDiv';
 
 export const SearchMoviePage : FC = () => {
 
     const [searchValue, setSearchValue] = useState("");
-
-    const navigator = useNavigate();
-
-    const handleSearchChange = (e : ChangeEvent<HTMLInputElement>) => {
-        setSearchValue(e.target.value);
-    }
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleSearch = () => {
-        navigator(`/movie/:${searchValue}`);
+        setSearchValue(inputRef.current!.value)  
+        console.log(inputRef.current?.value); 
     }
 
     return (
         <>
-            <div id='search-div'>
-                <input onChange={handleSearchChange} id='search-movie-input' placeholder='Search Movie' />
-                <button onClick={handleSearch} id='search-button'>
-                    <FontAwesomeIcon icon={faSearch} />
-                </button>
+
+            <div id='main-div'>
+                <div id='search-div'>
+                    <input ref={inputRef} id='search-movie-input' placeholder='Search Movie' />
+                    <button onClick={handleSearch} id='search-button'>
+                        <FontAwesomeIcon icon={faSearch} />
+                    </button>
+                </div>
+                {searchValue &&
+                    <ResultDiv search={searchValue} />
+                }
             </div>
+            
         </>
     )
 }
